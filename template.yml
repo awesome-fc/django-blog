@@ -1,0 +1,44 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  blog-pro:
+    Type: 'Aliyun::Serverless::Log'
+    Properties:
+      Description: 'blog log pro'
+    fc-log:
+      Type: 'Aliyun::Serverless::Log::Logstore'
+      Properties:
+        TTL: 362
+        ShardCount: 1 
+  
+  blog-service:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'django blog demo'
+      Policies:
+        - AliyunOSSFullAccess
+      LogConfig:
+        Project: 'blog-pro'
+        Logstore: 'fc-log'
+      VpcConfig:
+        VpcId: 'vpc-j6c4u85w9xxxxxxxxxx'
+        VSwitchIds: [ 'vsw-j6cuxxxxxxxxxxxxxxx' ]
+        SecurityGroupId: 'sg-j6c3xxxxxxxxxxxxxxxx'
+        InternetAccess: true
+    blog:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: main.handler
+        CodeUri: './'
+        Description: 'django blog http function'
+        Runtime: python3
+        Timeout: 60
+        MemorySize: 512
+      Events:
+        http-test:
+          Type: Http
+          Properties:
+            AuthType: ANONYMOUS
+            Methods: ['GET', 'POST', 'PUT']
+
+
