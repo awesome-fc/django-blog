@@ -87,10 +87,10 @@ DATABASES = {
 
 1. 安装fun工具
   - [安装nodejs](https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143450141843488beddae2a1044cab5acb5125baf0882000) 
-  - 安装[fun](https://github.com/aliyun/fun/tree/enhance_feature) enhance_feature 分支
+  - 安装[fun](https://github.com/aliyun/fun) 
   
   ```bash
-  npm install git://github.com/aliyun/fun.git#enhance_feature --save -g
+  npm install git://github.com/aliyun/fun.git --save -g
   ```
 
 2. 开通相关阿里云产品(函数计算，日志服务， RDS)，[创建vpc内的rds-mysql](https://yq.aliyun.com/articles/603249#setup-detail)
