@@ -24,7 +24,7 @@ Resources:
         VpcId: 'vpc-j6c4u85w9xxxxxxxxxx'
         VSwitchIds: [ 'vsw-j6cuxxxxxxxxxxxxxxx' ]
         SecurityGroupId: 'sg-j6c3xxxxxxxxxxxxxxxx'
-        InternetAccess: true
+      InternetAccess: true
     blog:
       Type: 'Aliyun::Serverless::Function'
       Properties:
@@ -36,7 +36,7 @@ Resources:
         MemorySize: 512
       Events:
         http-test:
-          Type: Http
+          Type: HTTP
           Properties:
             AuthType: ANONYMOUS
             Methods: ['GET', 'POST', 'PUT']
